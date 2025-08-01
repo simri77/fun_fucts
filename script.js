@@ -1,24 +1,24 @@
-//script 
-
-//google ai api 
 async function getData() {
-  const url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=YOUR_API_KEY"; // 👈 include your API key here
-
-  const requestBody = {
-    contents: [{
-      parts: [{
-        text: "Tell me a joke about programmers."  // 👈 change this to whatever prompt you want
-      }]
-    }]
-  };
+  const apiKey = 'AIzaSyDsIp4BEwbOzv2LXGmv2UXWEeuJhxSBEqY';
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
 
   try {
     const response = await fetch(url, {
-      method: "POST",  // Gemini needs POST
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json"
+        'Content-Type': 'application/json'
       },
-      body: JSON.stringify(requestBody)
+      body: JSON.stringify({
+        contents: [
+          {
+            parts: [
+              {
+                text: "Explain how AI works in a few words"
+              }
+            ]
+          }
+        ]
+      })
     });
 
     if (!response.ok) {
@@ -28,6 +28,11 @@ async function getData() {
     const json = await response.json();
     console.log(json);
   } catch (error) {
-    console.error("Fetch error:", error.message);
+    console.error(error.message);
   }
 }
+
+getData();
+console.log("Try programiz.pro");
+
+ 
