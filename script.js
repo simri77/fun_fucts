@@ -1,7 +1,7 @@
 const btn = document.getElementById("Generetor");
 const display = document.getElementById("factDisplay");
 
-btn.addEventListener("click", getData());
+btn.addEventListener("click", getData);
 async function getData() {
   const apiKey = 'AIzaSyDsIp4BEwbOzv2LXGmv2UXWEeuJhxSBEqY';
   const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
@@ -30,6 +30,9 @@ async function getData() {
     }
 
     const json = await response.json();
+
+    const aiText = json.candidates?.[0]?.content?.parts?.[0]?.text || "No fact received.";
+    display.innerHTML = aiText;
     console.log(json);
   } catch (error) {
     console.error(error.message);
