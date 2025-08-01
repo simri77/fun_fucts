@@ -1,3 +1,7 @@
+const btn = document.getElementById("Generetor");
+const display = document.getElementById("factDisplay");
+
+btn.addEventListener("click", getData());
 async function getData() {
   const apiKey = 'AIzaSyDsIp4BEwbOzv2LXGmv2UXWEeuJhxSBEqY';
   const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
@@ -13,7 +17,7 @@ async function getData() {
           {
             parts: [
               {
-                text: "Explain how AI works in a few words"
+                text: "Tell me fun facts under 20 words"
               }
             ]
           }
@@ -32,7 +36,6 @@ async function getData() {
   }
 }
 
-getData();
-console.log("Try programiz.pro");
+
 
  
